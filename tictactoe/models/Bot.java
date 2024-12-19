@@ -1,5 +1,6 @@
 package tictactoe.models;
 
+import tictactoe.factories.BotPlayingStrategyFactory;
 import tictactoe.strategies.botplayingstrategies.BotPlayingStrategy;
 
 public class Bot extends Player {
@@ -9,6 +10,8 @@ public class Bot extends Player {
     public Bot(long id, String name, Symbol symbol,BotDifficultyLevel level) {
         super(id, name, symbol, PlayerType.BOT);
         this.level = level;
+        this.botPlayingStrategy = BotPlayingStrategyFactory.getBotPlayingStrategyBasedOnDifficultyLevel(level);
+
     }
 
     public BotDifficultyLevel getLevel() {
@@ -20,13 +23,8 @@ public class Bot extends Player {
     }
 
     public Move makeMove(Board board){
-        System.out.println("Please tell the row index where you want to make a move:(Starting from 0)");
-        int row = scanner.nextInt();
 
-        System.out.println("Please tell the col index where you want to make a move:(Starting from 0)");
-        int col = scanner.nextInt();
-
-        return new Move(this,new Cell(row,col));
+        return botPlayingStrategy.makeMove(board);
 
     }
 }
