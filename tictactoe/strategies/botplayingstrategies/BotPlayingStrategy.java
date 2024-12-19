@@ -1,5 +1,8 @@
 package tictactoe.strategies.botplayingstrategies;
 
+import tictactoe.models.Board;
+import tictactoe.models.Move;
+
 public interface BotPlayingStrategy {
-    void makeMove();
+    Move makeMove(Board board);
 }

@@ -3,8 +3,15 @@ package tictactoe.models;
 public class Cell {
     private int row;
     private int col;
-    private CellStatus status;
+    private CellState cellState;
     private Player player;
+
+    public Cell(int row, int col) {
+        this.row = row;
+        this.col = col;
+        this.cellState = CellState.EMPTY;
+        this.player = null;
+    }
 
     public int getRow() {
         return row;
@@ -22,12 +29,12 @@ public class Cell {
         this.col = col;
     }
 
-    public CellStatus getStatus() {
-        return status;
+    public CellState getCellState() {
+        return cellState;
     }
 
-    public void setStatus(CellStatus status) {
-        this.status = status;
+    public void setCellState(CellState cellState) {
+        this.cellState = cellState;
     }
 
     public Player getPlayer() {

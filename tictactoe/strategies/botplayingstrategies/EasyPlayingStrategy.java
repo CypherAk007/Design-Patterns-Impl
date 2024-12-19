@@ -1,8 +1,12 @@
 package tictactoe.strategies.botplayingstrategies;
 
-public class EasyPlayingStrategy implements BotPlayingStrategy{
-    @Override
-    public void makeMove() {
+import tictactoe.models.Board;
+import tictactoe.models.Move;
 
+public class EasyPlayingStrategy implements BotPlayingStrategy{
+
+    @Override
+    public Move makeMove(Board board) {
+        return null;
     }
 }
