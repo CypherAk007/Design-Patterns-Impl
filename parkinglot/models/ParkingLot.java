@@ -1,8 +1,5 @@
 package parkinglot.models;
 
-import parkinglot.strategies.SpotAssignmentStrategy;
-import parkinglot.strategies.FeeCalculationStrategy;
-
 import java.util.List;
 
 //Create base model class for audit fields and extend it
@@ -16,6 +13,17 @@ public class ParkingLot extends BaseModel{
 //    Create Enum for strategies for Factory to return specific strategy as per input
     private SpotAssignmentStrategyType spotAssignmentStrategyType;
     private FeeCalculationStrategyType feeCalculationStrategyType;
+
+    public ParkingLot() {
+    }
+
+    public ParkingLot(List<ParkingFloor> floors, List<Gate> gates, List<VehicleType> allowedVehicleTypes, ParkingLotStatus status, SpotAssignmentStrategyType spotAssignmentStrategyType) {
+        this.floors = floors;
+        this.gates = gates;
+        this.allowedVehicleTypes = allowedVehicleTypes;
+        this.status = status;
+        this.spotAssignmentStrategyType = spotAssignmentStrategyType;
+    }
 
     public List<ParkingFloor> getFloors() {
         return floors;
@@ -63,5 +71,17 @@ public class ParkingLot extends BaseModel{
 
     public void setFeeCalculationStrategyType(FeeCalculationStrategyType feeCalculationStrategyType) {
         this.feeCalculationStrategyType = feeCalculationStrategyType;
+    }
+
+    @Override
+    public String toString() {
+        return "ParkingLot{" +
+                "floors=" + floors +
+                ", gates=" + gates +
+                ", allowedVehicleTypes=" + allowedVehicleTypes +
+                ", status=" + status +
+                ", spotAssignmentStrategyType=" + spotAssignmentStrategyType +
+                ", feeCalculationStrategyType=" + feeCalculationStrategyType +
+                '}';
     }
 }

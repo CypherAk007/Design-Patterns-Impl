@@ -28,4 +28,13 @@ public class Vehicle extends BaseModel{
     public void setVehicleNumber(String vehicleNumber) {
         this.vehicleNumber = vehicleNumber;
     }
+
+    @Override
+    public String toString() {
+        return "Vehicle{" +
+                "ownerName='" + ownerName + '\'' +
+                ", type=" + type +
+                ", vehicleNumber='" + vehicleNumber + '\'' +
+                '}';
+    }
 }

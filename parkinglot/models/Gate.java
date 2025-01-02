@@ -2,16 +2,24 @@ package parkinglot.models;
 
 public class Gate extends BaseModel {
 
-    private int gateNumber;
+    private long gateNumber;
     private GateStatus gateStatus;
     private Operator currentOperator;
     private GateType type;
 
-    public int getGateNumber() {
+    public Gate(){}
+
+    public Gate(GateStatus gateStatus, Operator currentOperator, GateType type) {
+        this.gateStatus = gateStatus;
+        this.currentOperator = currentOperator;
+        this.type = type;
+    }
+
+    public long getGateNumber() {
         return gateNumber;
     }
 
-    public void setGateNumber(int gateNumber) {
+    public void setGateNumber(long gateNumber) {
         this.gateNumber = gateNumber;
     }
 
@@ -37,5 +45,15 @@ public class Gate extends BaseModel {
 
     public void setType(GateType type) {
         this.type = type;
+    }
+
+    @Override
+    public String toString() {
+        return "Gate{" +
+                "gateNumber=" + gateNumber +
+                ", gateStatus=" + gateStatus +
+                ", currentOperator=" + currentOperator +
+                ", type=" + type +
+                '}';
     }
 }

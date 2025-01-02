@@ -58,4 +58,16 @@ public class Ticket extends BaseModel{
     public void setVehicle(Vehicle vehicle) {
         this.vehicle = vehicle;
     }
+
+    @Override
+    public String toString() {
+        return "Ticket{" +
+                "entryTime=" + entryTime +
+                ", assignedSpot=" + assignedSpot +
+                ", number='" + number + '\'' +
+                ", generatedAt=" + generatedAt +
+                ", generatedBy=" + generatedBy +
+                ", vehicle=" + vehicle +
+                '}';
+    }
 }
