@@ -34,8 +34,8 @@ public class Board {
             System.out.println();
             for(int j=0;j<size;j++){
                 Cell cell = board.get(i).get(j);
-                char ch = cell.getPlayer().getSymbol().getCharacter();
-                System.out.println(String.format(" %s ",ch));
+                char ch = cell.getCellState()==CellState.EMPTY?' ':cell.getPlayer().getSymbol().getCharacter();
+                System.out.print(String.format(" %s ",ch));
                 if(j<size -1){
                     System.out.print("|");
                 }

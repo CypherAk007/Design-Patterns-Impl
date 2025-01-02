@@ -78,10 +78,61 @@ public class Game {
     public void makeMove(){
         Player currentPlayer = this.players.get(nextPlayerMoveIndex);
         System.out.println(String.format("It's %s's turn. Please make your Move!!",currentPlayer.getName()));
+
         Move move = currentPlayer.makeMove(board);
         System.out.println(String.format("%s has made a move at row: %s and column: %s",currentPlayer.getName(),move.getCell().getRow(),move.getCell().getCol()));
 
+        if(!isValidMove(move)){
+            System.out.println("Invalid Move! Please Try Again...");
+            return;
+        }
+
+        int row = move.getCell().getRow();
+        int col = move.getCell().getCol();
+        Cell cellToChange = board.getBoard().get(row).get(col);
+        cellToChange.setCellState(CellState.FILLED);
+        cellToChange.setPlayer(move.getPlayer());
+
+        Move finalMove = new Move(currentPlayer,cellToChange);
+        moves.add(finalMove);
+        nextPlayerMoveIndex = (nextPlayerMoveIndex+1)%players.size();
+
+        if(checkWinner(board,finalMove)){
+            state = GameState.WIN;
+            winner = currentPlayer;
+        }else if(moves.size()==this.board.getSize() *this.board.getSize()){
+            state = GameState.DRAW;
+        }
+
     }
+
+    private boolean checkWinner(Board board,Move lastMove){
+        for(WinningStrategy winningStrategy: winningStrategies){
+            if(winningStrategy.checkWinner(board,lastMove)){
+                return  true;
+            }
+        }
+        return true;
+
+    }
+
+    public boolean isValidMove(Move move){
+        int row = move.getCell().getRow();
+        int col = move.getCell().getCol();
+        if(move.getCell().getRow()>=board.getSize()){
+            return false;
+        }
+        if(move.getCell().getCol()>=board.getSize()){
+            return false;
+        }
+        if(board.getBoard().get(row).get(col).getCellState()!=CellState.EMPTY){
+            return false;
+        }
+        return true;
+
+
+    }
+
     public static class GameBuilder{
 //        private Board board;
         private int size;

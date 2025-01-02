@@ -38,6 +38,8 @@ public class Client {
             gameController.makeMove(game);
         }
 
+        gameController.displayBoard(game);
+
         if(gameController.getGameState(game).equals(GameState.DRAW)){
             System.out.println("Game has been drawn!!");
         }else{
