@@ -3,33 +3,43 @@ package parkinglot.dtos;
 import parkinglot.models.Gate;
 import parkinglot.models.ParkingSpot;
 import parkinglot.models.Vehicle;
+import parkinglot.models.VehicleType;
 
 public class IssueTicketRequestDTO {
-    private Vehicle vehicle;
-    private Gate gate;
-    private ParkingSpot parkingSpot;
+    private VehicleType vehicleType;
+    private String vehicleNumber;
+    private String vehicleOwnerName;
+    private long gateId;
 
-    public Vehicle getVehicle() {
-        return vehicle;
+    public VehicleType getVehicleType() {
+        return vehicleType;
     }
 
-    public void setVehicle(Vehicle vehicle) {
-        this.vehicle = vehicle;
+    public void setVehicleType(VehicleType vehicleType) {
+        this.vehicleType = vehicleType;
     }
 
-    public Gate getGate() {
-        return gate;
+    public String getVehicleNumber() {
+        return vehicleNumber;
     }
 
-    public void setGate(Gate gate) {
-        this.gate = gate;
+    public void setVehicleNumber(String vehicleNumber) {
+        this.vehicleNumber = vehicleNumber;
     }
 
-    public ParkingSpot getParkingSpot() {
-        return parkingSpot;
+    public String getVehicleOwnerName() {
+        return vehicleOwnerName;
     }
 
-    public void setParkingSpot(ParkingSpot parkingSpot) {
-        this.parkingSpot = parkingSpot;
+    public void setVehicleOwnerName(String vehicleOwnerName) {
+        this.vehicleOwnerName = vehicleOwnerName;
+    }
+
+    public long getGateId() {
+        return gateId;
+    }
+
+    public void setGateId(long gateId) {
+        this.gateId = gateId;
     }
 }

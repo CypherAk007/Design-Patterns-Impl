@@ -3,17 +3,17 @@ package parkinglot.models;
 import java.util.Date;
 
 public class BaseModel {
-    private int id;
+    private long id;
     private String createdBy;
     private Date createdAt;
     private String updatedBy;
     private Date updatedAt;
 
-    public int getId() {
+    public long getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(long id) {
         this.id = id;
     }
 

@@ -6,7 +6,7 @@ import java.util.Date;
 public class Ticket extends BaseModel{
     private Date entryTime;
     private ParkingSpot assignedSpot;
-    private int number;
+    private String number;
     private Gate generatedAt;
     private Operator generatedBy;
     private Vehicle vehicle;
@@ -27,11 +27,11 @@ public class Ticket extends BaseModel{
         this.assignedSpot = assignedSpot;
     }
 
-    public int getNumber() {
+    public String getNumber() {
         return number;
     }
 
-    public void setNumber(int number) {
+    public void setNumber(String number) {
         this.number = number;
     }
 
