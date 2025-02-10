@@ -1,4 +1,4 @@
-package tictactoe.models;
+package tictactoe_redo1.models;
 
 import java.util.Scanner;
 
@@ -9,12 +9,12 @@ public class Player {
     private PlayerType playerType;
     private Scanner scanner;
 
-    public Player(long id,String name,Symbol symbol,PlayerType playerType){
+    public Player(long id, String name, Symbol symbol, PlayerType playerType) {
         this.id = id;
         this.name = name;
         this.symbol = symbol;
-        this.playerType =playerType;
-        this.scanner  = new Scanner(System.in);
+        this.playerType = playerType;
+        this.scanner = new Scanner(System.in);
     }
 
     public Symbol getSymbol() {
@@ -49,17 +49,6 @@ public class Player {
         this.playerType = playerType;
     }
 
-    public Move makeMove(Board board){
-        System.out.println("Please tell the row index where you want to make a move:(Starting from 0)");
-        int row = scanner.nextInt();
-
-        System.out.println("Please tell the col index where you want to make a move:(Starting from 0)");
-        int col = scanner.nextInt();
-
-        return new Move(this,new Cell(row,col));
-
-    }
-
     @Override
     public String toString() {
         return "Player{" +
@@ -69,4 +58,5 @@ public class Player {
                 ", playerType=" + playerType +
                 '}';
     }
+
 }

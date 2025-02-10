@@ -1,18 +1,10 @@
-package tictactoe;
+package tictactoe_redo1;
 
-import tictactoe.controllers.GameController;
-import tictactoe.exceptions.DuplicateSymbolException;
-import tictactoe.exceptions.MoreThanOneBotException;
-import tictactoe.exceptions.PlayersAndDimensionsMismatchException;
-import tictactoe.models.*;
-import tictactoe.strategies.winningstrategies.ColWS;
-import tictactoe.strategies.winningstrategies.RowWS;
-import tictactoe.strategies.winningstrategies.WinningStrategy;
 
 import java.util.List;
 
 public class Client {
-    public static void main(String[] args) throws PlayersAndDimensionsMismatchException, DuplicateSymbolException, MoreThanOneBotException {
+    public static void main(String[] args) {
         GameController gameController = new GameController();
 
 //        FROM THE CLIENT GET:
@@ -22,7 +14,7 @@ public class Client {
 //        get players info,
         List<Player> players = List.of(
                 new Player(1L,"Ak",new Symbol('x'), PlayerType.HUMAN),
-                new Bot(2L,"GPT",new Symbol('O'),BotDifficultyLevel.EASY)
+                new Bot(2L,"GPT",new Symbol('O'), BotDifficultyLevel.EASY)
         );
 //        get winningStrategies info,
         List<WinningStrategy> winningStrategies = List.of(
@@ -49,7 +41,7 @@ public class Client {
 }
 
 
-// Tic-Tac-Toe
+// Tic-Tac-Toe - Journey via Command Line
 
 // create the players
 // start a game
