@@ -1,10 +1,13 @@
-package tictactoe_redo1;
+package tictactoe_template;
 
 
-import tictactoe_redo1.models.Game;
-import tictactoe_redo1.controllers.GameController;
-import tictactoe_redo1.models.GameState;
-import tictactoe_redo1.strategies.winningStrategy.WinningStrategy;
+
+
+import tictactoe_template.controllers.GameController;
+import tictactoe_template.models.Bot;
+import tictactoe_template.models.BotDifficultyLevel;
+import tictactoe_template.models.Game;
+import tictactoe_template.models.Player;
 
 import java.util.List;
 
