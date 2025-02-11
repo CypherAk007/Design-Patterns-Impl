@@ -1,10 +1,10 @@
 package tictactoe_redo1;
 
 
-import tictactoe_redo1.models.Game;
+import tictactoe_redo1.models.*;
 import tictactoe_redo1.controllers.GameController;
-import tictactoe_redo1.models.GameState;
 import tictactoe_redo1.strategies.winningStrategy.WinningStrategy;
+
 
 import java.util.List;
 
@@ -23,8 +23,8 @@ public class Client {
         );
 //        get winningStrategies info,
         List<WinningStrategy> winningStrategies = List.of(
-                new RowWS(),
-                new ColWS()
+//                new RowWS(),
+//                new ColWS()
         );
 
         Game game = gameController.startGame(sizeOfBoard,players,winningStrategies);

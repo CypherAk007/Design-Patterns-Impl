@@ -10,9 +10,11 @@ public class Game {
     private List<Player> players;
     private List<Move> moves;
     private Player winner;
-    private GameState state;
+    private GameState gameState;
     private int nextPlayerMoveIndex;
     private List<WinningStrategy> winningStrategies;
+
+
     public Board getBoard() {
         return board;
     }
@@ -37,11 +39,11 @@ public class Game {
     public void setWinner(Player winner) {
         this.winner = winner;
     }
-    public GameState getState() {
-        return state;
+    public GameState getGameState() {
+        return gameState;
     }
-    public void setState(GameState state) {
-        this.state = state;
+    public void setGameState(GameState gameState) {
+        this.gameState = gameState;
     }
     public int getNextPlayerMoveIndex() {
         return nextPlayerMoveIndex;
