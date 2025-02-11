@@ -3,6 +3,7 @@ package tictactoe_redo1.models;
 import java.util.List;
 
 public class Board {
+
     private int size;
     private List<List<Cell>> grid;
     public int getSize() {

@@ -13,7 +13,16 @@ public class GameController {
 
     public Game startGame(int sizeOfBoard, List<Player> players, List<WinningStrategy> winningStrategies){
 
-        return null;
+        return Game.builder()
+                .setSizeOfBoard(sizeOfBoard)
+                .setPlayers(players)
+                .setWinningStrategies(winningStrategies)
+                //Additional INFO
+                // Setting Multivalued Attributes - Not req for this proj
+                // instead of above winningStrategies we can add it manually by iterating the list
+//                .addWinningStrategies(winningStrategies.get(0))
+//                .addWinningStrategies(winningStrategies.get(1))
+                .build();
 
     }
 
