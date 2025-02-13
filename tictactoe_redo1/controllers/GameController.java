@@ -1,6 +1,9 @@
 package tictactoe_redo1.controllers;
 
 
+import tictactoe_redo1.exceptions.DuplicateSymbolException;
+import tictactoe_redo1.exceptions.MoreThanOneBotException;
+import tictactoe_redo1.exceptions.PlayersAndDimensionsMismatchException;
 import tictactoe_redo1.models.Game;
 import tictactoe_redo1.models.GameState;
 import tictactoe_redo1.models.Player;
@@ -11,7 +14,7 @@ import java.util.List;
 public class GameController {
 
 
-    public Game startGame(int sizeOfBoard, List<Player> players, List<WinningStrategy> winningStrategies){
+    public Game startGame(int sizeOfBoard, List<Player> players, List<WinningStrategy> winningStrategies) throws PlayersAndDimensionsMismatchException, DuplicateSymbolException, MoreThanOneBotException {
 
         return Game.builder()
                 .setSizeOfBoard(sizeOfBoard)
@@ -31,11 +34,11 @@ public class GameController {
     }
 
     public void makeMove(Game game){
-
+        game.makeMove();
     }
 
     public void displayBoard(Game game){
-
+        game.display();
     }
 
     public Player getWinner(Game game){

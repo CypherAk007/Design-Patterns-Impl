@@ -1,5 +1,7 @@
 package tictactoe_redo1.models;
 
+
+
 import java.util.Scanner;
 
 public class Player {
@@ -59,4 +61,13 @@ public class Player {
                 '}';
     }
 
+    public Move makeMove(Board board) {
+        System.out.println("Please tell the row index where you want to make a move:(Starting from 0)");
+        int row = scanner.nextInt();
+
+        System.out.println("Please tell the col index where you want to make a move:(Starting from 0)");
+        int col = scanner.nextInt();
+
+        return new Move(this,new Cell(row,col));
+    }
 }

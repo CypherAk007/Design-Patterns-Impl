@@ -1,18 +1,17 @@
 package tictactoe_redo1.models;
 
-import tictactoe.models.CellState;
-import tictactoe.models.Player;
+
 
 public class Cell {
     private int row;
     private int col;
-    private CellState cellState;
-    private tictactoe.models.Player player;
+    private CellStatus cellState;
+    private Player player;
 
     public Cell(int row, int col) {
         this.row = row;
         this.col = col;
-        this.cellState = CellState.EMPTY;
+        this.cellState = CellStatus.EMPTY;
         this.player = null;
     }
 
@@ -32,15 +31,15 @@ public class Cell {
         this.col = col;
     }
 
-    public CellState getCellState() {
+    public CellStatus getCellState() {
         return cellState;
     }
 
-    public void setCellState(CellState cellState) {
+    public void setCellState(CellStatus cellState) {
         this.cellState = cellState;
     }
 
-    public tictactoe.models.Player getPlayer() {
+    public Player getPlayer() {
         return player;
     }
 

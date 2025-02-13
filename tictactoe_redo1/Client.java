@@ -1,6 +1,9 @@
 package tictactoe_redo1;
 
 
+import tictactoe_redo1.exceptions.DuplicateSymbolException;
+import tictactoe_redo1.exceptions.MoreThanOneBotException;
+import tictactoe_redo1.exceptions.PlayersAndDimensionsMismatchException;
 import tictactoe_redo1.models.*;
 import tictactoe_redo1.controllers.GameController;
 import tictactoe_redo1.strategies.winningStrategy.WinningStrategy;
@@ -9,7 +12,7 @@ import tictactoe_redo1.strategies.winningStrategy.WinningStrategy;
 import java.util.List;
 
 public class Client {
-    public static void main(String[] args) {
+    public static void main(String[] args) throws PlayersAndDimensionsMismatchException, DuplicateSymbolException, MoreThanOneBotException {
         GameController gameController = new GameController();
 
 //        FROM THE CLIENT GET:

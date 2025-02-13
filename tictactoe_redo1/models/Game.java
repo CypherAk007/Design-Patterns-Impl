@@ -1,12 +1,16 @@
 package tictactoe_redo1.models;
 
 
+
+import tictactoe_redo1.exceptions.DuplicateSymbolException;
+import tictactoe_redo1.exceptions.MoreThanOneBotException;
+import tictactoe_redo1.exceptions.PlayersAndDimensionsMismatchException;
 import tictactoe_redo1.strategies.winningStrategy.WinningStrategy;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class Game {
+public class  Game {
     private Board board;
     private List<Player> players;
     private List<Move> moves;
@@ -16,9 +20,15 @@ public class Game {
     private List<WinningStrategy> winningStrategies;
 
 
-//    Game class constructor should be private - Builder dp as we should not
+//    Game class constructor  should be private - Builder dp as we should not
 //directly be able to modify the Game
-    private Game(){
+    private Game(int size, List<Player> players, List<WinningStrategy> winningStrategies){
+        this.board = new Board(size);
+        this.players = players;
+        this.moves = new ArrayList<>();
+        this.gameState = GameState.IN_PROGRESS;
+        this.nextPlayerMoveIndex = 0;
+        this.winningStrategies = winningStrategies;
 
     }
 
@@ -47,6 +57,19 @@ public class Game {
     }
     public List<WinningStrategy> getWinningStrategies() {
         return winningStrategies;
+    }
+
+    public void display(){
+        board.display();
+    }
+
+    public void makeMove(){
+        Player currentPlayer = this.players.get(nextPlayerMoveIndex);
+        System.out.println(String.format("It's %s's turn, Please Make a Move.",currentPlayer.getName()));
+        Move move = currentPlayer.makeMove(board);
+        System.out.println(String.format("%s has made a move at row: %s and column: %s",currentPlayer.getName(),move.getCell().getRow(),move.getCell().getCol()));
+
+
     }
 
     public static class GameBuilder{
@@ -97,8 +120,41 @@ public class Game {
 //        this.winningStrategies.add(winningStrategy);
 //        return this;
 //    }
-        public Game build(){
-            return new Game();
+
+
+        public Game build() throws MoreThanOneBotException, DuplicateSymbolException, PlayersAndDimensionsMismatchException {
+            validateSymbols();
+            validatePlayerAndDimension();
+            validateBot();
+            return new Game(this.size,this.players,this.winningStrategies);
+        }
+
+        private void validateSymbols() throws DuplicateSymbolException {
+            long count = this.players.stream()
+                    .map(Player::getSymbol)
+                    .map(Symbol::getCharacter)
+                    .distinct()
+                    .count();
+
+            if(players.size()!=count){
+                throw new DuplicateSymbolException("Duplicate Symbols found for Players");
+            }
+
+        }
+
+        private void validateBot() throws MoreThanOneBotException {
+            long count = this.players.stream()
+                    .filter(player -> player.getPlayerType()==PlayerType.BOT)
+                    .count();
+            if(count>1){
+                throw new MoreThanOneBotException(String.format("Found %s Bots.",count));
+            }
+        }
+
+        private void validatePlayerAndDimension() throws PlayersAndDimensionsMismatchException {
+            if(this.players.size()!=this.size){
+                throw new PlayersAndDimensionsMismatchException("Enter Valid No of players!!");
+            }
         }
     }
 }

@@ -9,7 +9,7 @@ public class Move {
         this.cell = cell;
     }
 
-    public tictactoe.models.Player getPlayer() {
+    public Player getPlayer() {
         return player;
     }
 
