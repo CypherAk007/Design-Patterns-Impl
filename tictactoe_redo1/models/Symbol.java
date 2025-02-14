@@ -15,4 +15,11 @@ public class Symbol {
     public void setCharacter(char character) {
         this.character = character;
     }
+
+    @Override
+    public String toString() {
+        return "Symbol{" +
+                "character=" + character +
+                '}';
+    }
 }

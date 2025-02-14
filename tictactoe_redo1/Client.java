@@ -6,6 +6,9 @@ import tictactoe_redo1.exceptions.MoreThanOneBotException;
 import tictactoe_redo1.exceptions.PlayersAndDimensionsMismatchException;
 import tictactoe_redo1.models.*;
 import tictactoe_redo1.controllers.GameController;
+import tictactoe_redo1.strategies.winningStrategy.ColumnWinningStrategy;
+import tictactoe_redo1.strategies.winningStrategy.DiagonalWinningStrategy;
+import tictactoe_redo1.strategies.winningStrategy.RowWinningStrategy;
 import tictactoe_redo1.strategies.winningStrategy.WinningStrategy;
 
 
@@ -26,8 +29,9 @@ public class Client {
         );
 //        get winningStrategies info,
         List<WinningStrategy> winningStrategies = List.of(
-//                new RowWS(),
-//                new ColWS()
+            new ColumnWinningStrategy(),
+                new RowWinningStrategy(),
+                new DiagonalWinningStrategy()
         );
 
         Game game = gameController.startGame(sizeOfBoard,players,winningStrategies);

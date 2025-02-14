@@ -3,11 +3,12 @@ package tictactoe_template;
 
 
 
-import tictactoe_template.controllers.GameController;
-import tictactoe_template.models.Bot;
-import tictactoe_template.models.BotDifficultyLevel;
-import tictactoe_template.models.Game;
-import tictactoe_template.models.Player;
+import tictactoe.strategies.winningstrategies.ColWS;
+import tictactoe.strategies.winningstrategies.RowWS;
+import tictactoe_redo1.controllers.GameController;
+import tictactoe_redo1.models.*;
+import tictactoe_redo1.strategies.winningStrategy.ColumnWinningStrategy;
+import tictactoe_redo1.strategies.winningStrategy.WinningStrategy;
 
 import java.util.List;
 
@@ -26,8 +27,7 @@ public class Client {
         );
 //        get winningStrategies info,
         List<WinningStrategy> winningStrategies = List.of(
-                new RowWS(),
-                new ColWS()
+                new ColumnWinningStrategy()
         );
 
         Game game = gameController.startGame(sizeOfBoard,players,winningStrategies);

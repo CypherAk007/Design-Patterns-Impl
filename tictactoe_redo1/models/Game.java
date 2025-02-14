@@ -69,7 +69,60 @@ public class  Game {
         Move move = currentPlayer.makeMove(board);
         System.out.println(String.format("%s has made a move at row: %s and column: %s",currentPlayer.getName(),move.getCell().getRow(),move.getCell().getCol()));
 
+//        UPDATE MOVE TO THE BOARD
+        if(!isValidMove(move)){
+            System.out.println("Invalid Move! Please try again...");
+            return;
+        }
 
+        int row = move.getCell().getRow();
+        int col = move.getCell().getCol();
+        Cell cellToChange = board.getGrid().get(row).get(col);
+        cellToChange.setCellState(CellStatus.FILLED);
+        cellToChange.setPlayer(move.getPlayer());
+
+//        Put the move to moves list
+        Move finalMove = new Move(currentPlayer,cellToChange);
+        moves.add(finalMove);
+
+//        update the next player //
+        nextPlayerMoveIndex = (nextPlayerMoveIndex + 1)%players.size();
+
+//        check if cur person is winner
+
+        if(checkWinner(board,finalMove)){
+            gameState = GameState.WIN;
+            winner = currentPlayer;
+        }else if(moves.size()==this.board.getSize()*this.board.getSize()){
+            gameState = GameState.DRAW;
+        }
+    }
+
+    private boolean checkWinner(Board board, Move finalMove) {
+        for(WinningStrategy winningStrategy: winningStrategies){
+            if(winningStrategy.checkWinner(board,finalMove)){
+                return true;
+            }
+        }
+        return false;
+    }
+
+    private boolean isValidMove(Move move) {
+        int row = move.getCell().getRow();
+        int col = move.getCell().getCol();
+
+        if(row>=board.getSize()){
+            return false;
+        }
+
+        if(col>=board.getSize()){
+            return false;
+        }
+
+        if(board.getGrid().get(row).get(col).getCellState()!=CellStatus.EMPTY){
+            return false;
+        }
+        return true;
     }
 
     public static class GameBuilder{
@@ -152,7 +205,7 @@ public class  Game {
         }
 
         private void validatePlayerAndDimension() throws PlayersAndDimensionsMismatchException {
-            if(this.players.size()!=this.size){
+            if(this.players.size()!=this.size-1){
                 throw new PlayersAndDimensionsMismatchException("Enter Valid No of players!!");
             }
         }
