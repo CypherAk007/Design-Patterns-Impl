@@ -36,4 +36,16 @@ public class RowWinningOptimizedStrategy  implements WinningStrategy {
 
         return false;
     }
+
+    @Override
+    public void handleUndo(Board board, Move undoMove) {
+        int row = undoMove.getCell().getRow();
+        Symbol symbol = undoMove.getPlayer().getSymbol();
+
+        Map<Symbol,Integer> symbolCounts = countOfSymbols.get(row);
+
+        symbolCounts.put(symbol,symbolCounts.get(symbol)-1);
+//        System.out.println(countOfSymbols);
+
+    }
 }

@@ -9,6 +9,7 @@ import tictactoe_redo1.strategies.winningStrategy.WinningStrategy;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 public class  Game {
     private Board board;
@@ -123,6 +124,26 @@ public class  Game {
             return false;
         }
         return true;
+    }
+
+    public Optional<Move> undo() {
+        if(moves.isEmpty()){
+            System.out.println("No moves to undo!!");
+            return Optional.empty();
+        }
+
+        Move lastMove = moves.get(moves.size()-1);
+        moves.remove(lastMove);//remove from list
+
+        lastMove.getCell().reset();// reset the cell
+        nextPlayerMoveIndex = (nextPlayerMoveIndex - 1 + players.size())%players.size();// revert to the players turn
+
+//        undo the winning strategy move also
+        for(WinningStrategy winningStrategy: winningStrategies){
+            winningStrategy.handleUndo(board,lastMove);
+        }
+        return Optional.of(lastMove);
+
     }
 
     public static class GameBuilder{

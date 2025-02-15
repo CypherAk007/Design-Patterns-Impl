@@ -36,4 +36,21 @@ public class DiagonalWinningOptimizedStrategy implements WinningStrategy{
         }
         return false;
     }
+
+    @Override
+    public void handleUndo(Board board, Move undoMove) {
+        int row = undoMove.getCell().getRow();
+        int col = undoMove.getCell().getCol();
+//        System.out.println(leftDiagonalSymbolCounts);
+//        System.out.println(rightDiagonalSymbolCounts);
+        Symbol symbol = undoMove.getPlayer().getSymbol();
+
+        //left diagonal
+        if(row==col){
+            leftDiagonalSymbolCounts.put(symbol,leftDiagonalSymbolCounts.get(symbol)-1);
+        }
+        if(row+col==board.getSize()-1) {
+            rightDiagonalSymbolCounts.put(symbol, rightDiagonalSymbolCounts.get(symbol) - 1);
+        }
+    }
 }

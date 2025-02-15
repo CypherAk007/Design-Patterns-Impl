@@ -7,6 +7,12 @@ public class DiagonalWinningStrategy implements WinningStrategy{
     public boolean checkWinner(Board board, Move lastMove) {
         return mainDiagonalCheck(board,lastMove) || crossDiagonalCheck(board,lastMove);
     }
+
+    @Override
+    public void handleUndo(Board board, Move undoMove) {
+
+    }
+
     public boolean mainDiagonalCheck(Board board, Move lastMove) {
         Player player = lastMove.getPlayer();
         int n = board.getSize();

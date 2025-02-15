@@ -10,9 +10,12 @@ import tictactoe_redo1.strategies.winningStrategy.*;
 
 
 import java.util.List;
+import java.util.Optional;
+import java.util.Scanner;
 
 public class Client {
     public static void main(String[] args) throws PlayersAndDimensionsMismatchException, DuplicateSymbolException, MoreThanOneBotException {
+        Scanner scanner = new Scanner(System.in);
         GameController gameController = new GameController();
 
 //        FROM THE CLIENT GET:
@@ -36,6 +39,14 @@ public class Client {
 
         while(gameController.getGameState(game).equals(GameState.IN_PROGRESS)){
             gameController.displayBoard(game);
+
+            System.out.println("Do you want to Undo? (y/n)");
+            String undoAnswer = scanner.next();
+            if(undoAnswer.equalsIgnoreCase("y")){
+                gameController.undo(game);
+                continue;
+            }
+
             gameController.makeMove(game);
         }
 

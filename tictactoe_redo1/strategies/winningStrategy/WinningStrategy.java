@@ -5,4 +5,6 @@ import tictactoe_redo1.models.Move;
 
 public interface WinningStrategy {
     boolean checkWinner(Board board, Move lastMove);
+
+    void handleUndo(Board board, Move undoMove);
 }

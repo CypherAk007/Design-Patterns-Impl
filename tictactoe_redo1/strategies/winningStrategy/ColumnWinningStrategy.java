@@ -22,4 +22,9 @@ public class ColumnWinningStrategy implements WinningStrategy {
         }
         return count==board.getSize();
     }
+
+    @Override
+    public void handleUndo(Board board, Move undoMove) {
+
+    }
 }
