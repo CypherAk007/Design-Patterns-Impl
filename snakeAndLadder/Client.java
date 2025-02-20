@@ -18,7 +18,7 @@ public class Client {
 
         Scanner scanner = new Scanner(System.in);
         GameController gameController = new GameController();
-        int sizeOfBoard = 6;
+        int sizeOfBoard = 4;
 
         List<Player> players = List.of(
                 new Player(1L,"Ak",new Symbol('A'), PlayerType.HUMAN),
@@ -26,8 +26,8 @@ public class Client {
         );
 
         List<WinningStrategy> winningStrategies = List.of();
-        List<Obstacles> ladderLocations = List.of();
-        List<Obstacles> snakeLocations = List.of();
+        List<Obstacles> ladderLocations = List.of(new Obstacles(2,15),new Obstacles(6,13));
+        List<Obstacles> snakeLocations = List.of(new Obstacles(14,1),new Obstacles(5,2));
 
         Game game = gameController.startGame(sizeOfBoard,players,winningStrategies,ladderLocations,snakeLocations);
 

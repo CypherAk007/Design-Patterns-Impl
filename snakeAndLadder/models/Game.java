@@ -21,7 +21,7 @@ public class Game {
     private List<Obstacles> ladders;
 
     public Game(int size, List<Player> players, List<WinningStrategy> winningStrategies, List<Obstacles> snakes, List<Obstacles> ladders) {
-        this.board = new Board(size);
+        this.board = new Board(size,snakes,ladders);
         this.players = players;
         this.moves = new ArrayList<>();
         this.gameState = GameState.IN_PROGRESS;

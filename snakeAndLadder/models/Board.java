@@ -6,10 +6,50 @@ import java.util.List;
 public class Board {
     private List<List<Cell>> board;
     private int sizeOfBoard;
+    private List<Obstacles> snakes;
+    private List<Obstacles> ladders;
 
-    public Board(int size){
+    public Board(int size,List<Obstacles> snakes,List<Obstacles> ladders){
         this.sizeOfBoard = size;
         this.board = initializeBoard(size);
+        this.snakes = snakes;
+        this.ladders = ladders;
+        updateWithSnakes(snakes);
+        updateWithLadders(ladders);
+
+    }
+
+    private void updateWithSnakes(List<Obstacles> obstacles) {
+        for(Obstacles obstacle:obstacles){
+            int[] rowColOfCell = findRowAndColGivenCellNumber(obstacle.getHead());
+            int row = rowColOfCell[0];
+            int col = rowColOfCell[1];
+            Cell cell = board.get(row).get(col);
+            cell.setCellState(CellState.SNAKE);
+            cell.setObstacleValue(obstacle.getTail());
+        }
+    }
+
+    private void updateWithLadders(List<Obstacles> obstacles) {
+        for(Obstacles obstacle:obstacles){
+            int[] rowColOfCell = findRowAndColGivenCellNumber(obstacle.getHead());
+            int row = rowColOfCell[0];
+            int col = rowColOfCell[1];
+            Cell cell = board.get(row).get(col);
+            cell.setCellState(CellState.LADDER);
+            cell.setObstacleValue(obstacle.getTail());
+        }
+    }
+
+    private int[] findRowAndColGivenCellNumber(int boardNo) {
+        int row = sizeOfBoard - (boardNo / sizeOfBoard) - 1;
+        int col;
+        if (row % 2 == 0) { // Even row
+            col = sizeOfBoard - (boardNo % sizeOfBoard);
+        } else { // Odd row
+            col = (boardNo % sizeOfBoard) - 1;
+        }
+        return new int[]{row,col};
     }
 
     private List<List<Cell>> initializeBoard(int size) {
