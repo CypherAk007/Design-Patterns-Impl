@@ -111,6 +111,9 @@ public class Board {
     }
     // Helper method to get formatted cell content
     private String getCellContent(Cell cell) {
+//        if(cell.getCellNo()==sizeOfBoard*sizeOfBoard){
+//            return  String.format("%-5s"," 🇮🇳  "); // Ensures fixed width
+//        }
         if (cell.getCellState() == CellState.FILLED) {
             StringBuilder players = new StringBuilder();
             for (Player player : cell.getPlayers()) {

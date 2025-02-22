@@ -93,4 +93,16 @@ public class Player {
         int randomNumber = (int) (Math.random() *6)+1;//(0 to 5)+1
         return randomNumber;
     }
+
+    @Override
+    public String toString() {
+        return "Player{" +
+                "symbol=" + symbol +
+                ", id=" + id +
+                ", name='" + name + '\'' +
+                ", playerType=" + playerType +
+                ", scanner=" + scanner +
+                ", cell=" + cell +
+                '}';
+    }
 }

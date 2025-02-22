@@ -4,7 +4,7 @@ import snakeAndLadder.Exceptions.DuplicateSymbolException;
 import snakeAndLadder.Exceptions.MoreThanOneBotException;
 import snakeAndLadder.Exceptions.ObstacleOutOfBoundsException;
 import snakeAndLadder.Exceptions.PlayersAndDimensionsMismatchException;
-import snakeAndLadder.Strategies.WinningStrategy;
+import snakeAndLadder.Strategies.winningStrategy.WinningStrategy;
 import snakeAndLadder.models.Game;
 import snakeAndLadder.models.GameState;
 import snakeAndLadder.models.Obstacles;

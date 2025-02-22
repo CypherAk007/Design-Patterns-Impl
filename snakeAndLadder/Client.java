@@ -5,7 +5,8 @@ import snakeAndLadder.Exceptions.DuplicateSymbolException;
 import snakeAndLadder.Exceptions.MoreThanOneBotException;
 import snakeAndLadder.Exceptions.ObstacleOutOfBoundsException;
 import snakeAndLadder.Exceptions.PlayersAndDimensionsMismatchException;
-import snakeAndLadder.Strategies.WinningStrategy;
+import snakeAndLadder.Strategies.winningStrategy.LastBoxWinningStrategy;
+import snakeAndLadder.Strategies.winningStrategy.WinningStrategy;
 import snakeAndLadder.controllers.GameController;
 import snakeAndLadder.models.*;
 
@@ -27,7 +28,7 @@ public class Client {
                 new Bot(2L,"GPT",new Symbol('X'), BotDifficultyLevel.EASY)
         );
 
-        List<WinningStrategy> winningStrategies = List.of();
+        List<WinningStrategy> winningStrategies = List.of(new LastBoxWinningStrategy());
 //        List<Obstacles> ladderLocations = List.of(new Obstacles(2,15),
 //                new Obstacles(6,13)
 //        );
@@ -53,11 +54,11 @@ public class Client {
 
 //        }
 
-//        if(gameController.getGameState(game).equals(GameState.DRAW)){
-//            System.out.println("Game has been drawn!!");
-//        }else{
-//            System.out.println("The winner is:- "+gameController.getWinner(game));
-//        }
+        if(gameController.getGameState(game).equals(GameState.DRAW)){
+            System.out.println("Game has been drawn!!");
+        }else{
+            System.out.println("The winner is:- "+gameController.getWinner(game).getName());
+        }
 
 
     }

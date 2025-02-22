@@ -4,7 +4,7 @@ import snakeAndLadder.Exceptions.DuplicateSymbolException;
 import snakeAndLadder.Exceptions.MoreThanOneBotException;
 import snakeAndLadder.Exceptions.ObstacleOutOfBoundsException;
 import snakeAndLadder.Exceptions.PlayersAndDimensionsMismatchException;
-import snakeAndLadder.Strategies.WinningStrategy;
+import snakeAndLadder.Strategies.winningStrategy.WinningStrategy;
 
 
 import java.util.ArrayList;
@@ -86,7 +86,7 @@ public class Game {
             int col = move.getCell().getCol();
             Cell cellToChange = board.getBoard().get(row).get(col);
             cellToChange.setCellState(CellState.FILLED);
-            cellToChange.getPlayers().add(move.getPlayer());
+            cellToChange.getPlayers().add(currentPlayer);
 //        add move to moves array
             Move finalMove = new Move(currentPlayer,cellToChange);
             moves.add(finalMove);
@@ -103,8 +103,11 @@ public class Game {
             currentPlayer.setCell(cellToChange);
 
 
-//        check winner
-
+//        check winner - No Draw as of now.// there is always a winner
+            if(checkWinner(board,finalMove)){
+                gameState = GameState.WIN;
+                winner = currentPlayer;
+            }
 
 
         }
@@ -112,6 +115,15 @@ public class Game {
             //        update the next player //
             nextPlayerMoveIndex = (nextPlayerMoveIndex + 1)%players.size();
 
+    }
+
+    private boolean checkWinner(Board board,Move finalMove){
+        for(WinningStrategy winningStrategy:winningStrategies){
+            if(winningStrategy.checkWinner(board,finalMove)){
+                return true;
+            }
+        }
+        return false;
     }
 
     private boolean isValidMove(Player currentPlayer,Move move) {
