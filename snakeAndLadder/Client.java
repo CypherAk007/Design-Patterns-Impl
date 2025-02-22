@@ -28,21 +28,30 @@ public class Client {
         );
 
         List<WinningStrategy> winningStrategies = List.of();
-        List<Obstacles> ladderLocations = List.of(new Obstacles(2,15),
-                new Obstacles(6,13)
+//        List<Obstacles> ladderLocations = List.of(new Obstacles(2,15),
+//                new Obstacles(6,13)
+//        );
+//        List<Obstacles> snakeLocations = List.of(new Obstacles(14,1),
+//                new Obstacles(5,2)
+//        );
+        List<Obstacles> ladderLocations = List.of(
         );
-        List<Obstacles> snakeLocations = List.of(new Obstacles(14,1),
-                new Obstacles(5,2)
+        List<Obstacles> snakeLocations = List.of(
         );
 
         Game game = gameController.startGame(sizeOfBoard,players,winningStrategies,ladderLocations,snakeLocations);
 
-//        while(gameController.getGameState(game).equals(GameState.IN_PROGRESS)){
-//            gameController.displayBoard(game);
-//            gameController.makeMove(game);
-//        }
+        while(gameController.getGameState(game).equals(GameState.IN_PROGRESS)){
+            gameController.displayBoard(game);
+            gameController.makeMove(game);
+        }
 
         gameController.displayBoard(game);
+//        for(int i=1;i<=16;i++){
+//        int[] val = game.getBoard().findRowAndColGivenCellNumber(i);
+//        System.out.println("row: "+val[0]+"col: "+val[1]);
+
+//        }
 
 //        if(gameController.getGameState(game).equals(GameState.DRAW)){
 //            System.out.println("Game has been drawn!!");

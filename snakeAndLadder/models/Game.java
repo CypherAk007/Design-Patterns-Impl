@@ -74,8 +74,61 @@ public class Game {
     public void makeMove() {
         Player currentPlayer = this.players.get(nextPlayerMoveIndex);
         System.out.println(String.format("Its %s turn to play, Please Roll the Dice...",currentPlayer.getName()));
-//        Move move = currentPlayer.makeMove(board);
+        Move move = currentPlayer.makeMove(board);
+        System.out.println(String.format("%s's New Board Location is : %d",currentPlayer.getName(),move.getCell().getCellNo()));
 
+        if(!isValidMove(currentPlayer,move)){
+            System.out.println("Invalid Move!");
+        }else{
+            int currentBoardLocation = currentPlayer.getCell().getCellNo();
+//        change the new cell status if valid
+            int row = move.getCell().getRow();
+            int col = move.getCell().getCol();
+            Cell cellToChange = board.getBoard().get(row).get(col);
+            cellToChange.setCellState(CellState.FILLED);
+            cellToChange.getPlayers().add(move.getPlayer());
+//        add move to moves array
+            Move finalMove = new Move(currentPlayer,cellToChange);
+            moves.add(finalMove);
+
+//        remove player from the player list of prev cell
+//            board no player list of cell
+            Cell currentPlayerCell = currentPlayer.getCell();
+            currentPlayerCell.getPlayers().remove(currentPlayer);
+            if(currentPlayerCell.getPlayers().size()==0){
+                currentPlayerCell.setCellState(CellState.EMPTY);
+            }
+
+//        change the cell of player
+            currentPlayer.setCell(cellToChange);
+
+
+//        check winner
+
+
+
+        }
+//        update nextPlayerIndx
+            //        update the next player //
+            nextPlayerMoveIndex = (nextPlayerMoveIndex + 1)%players.size();
+
+    }
+
+    private boolean isValidMove(Player currentPlayer,Move move) {
+        int row = move.getCell().getRow();
+        int col = move.getCell().getCol();
+
+        if(currentPlayer.getCell().getRow()==row && currentPlayer.getCell().getCol()==col){
+            return false;
+        }
+        if(row<0 || row>=board.getSizeOfBoard()){
+            return false;
+        }
+
+        if(col<0 || col>=board.getSizeOfBoard()){
+            return false;
+        }
+        return true;
     }
 
 

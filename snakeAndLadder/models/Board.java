@@ -30,6 +30,10 @@ public class Board {
         int col = rowColOfCell[1];
         Cell cell = board.get(row).get(col);
         cell.setCellState(CellState.FILLED);
+        for(Player player:players){
+            player.setCell(cell);
+        }
+
         Set<Player> playerSet = players.stream()
                         .collect(Collectors.toSet());
         cell.setPlayers(playerSet);
@@ -57,14 +61,16 @@ public class Board {
         }
     }
 
-    private int[] findRowAndColGivenCellNumber(int boardNo) {
-        int row = sizeOfBoard - (boardNo / sizeOfBoard) - 1;
+    public int[] findRowAndColGivenCellNumber(int boardNo) {
+        boardNo = boardNo-1;//ZERO BASED
+        int row = sizeOfBoard -1 + -1*(((boardNo) / (sizeOfBoard)));
         int col;
         if (row % 2 == 0) { // Even row
-            col = sizeOfBoard - (boardNo % sizeOfBoard);
+            col = sizeOfBoard-1-(boardNo% sizeOfBoard) ;
         } else { // Odd row
-            col = (boardNo % sizeOfBoard) - 1;
+            col = (boardNo% sizeOfBoard);
         }
+//        System.out.println(sizeOfBoard+" "+row+" "+col);
         return new int[]{row,col};
     }
 
@@ -141,5 +147,21 @@ public class Board {
             if (i < cols - 1) System.out.print("┴");
         }
         System.out.println("┘");
+    }
+
+    public int getSizeOfBoard() {
+        return sizeOfBoard;
+    }
+
+    public void setSizeOfBoard(int sizeOfBoard) {
+        this.sizeOfBoard = sizeOfBoard;
+    }
+
+    public List<List<Cell>> getBoard() {
+        return board;
+    }
+
+    public void setBoard(List<List<Cell>> board) {
+        this.board = board;
     }
 }

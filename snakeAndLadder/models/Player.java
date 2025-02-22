@@ -11,6 +11,7 @@ public class Player {
     private String name;
     private PlayerType playerType;
     private Scanner scanner;
+    private Cell cell;
 
     public Player(long id, String name, Symbol symbol, PlayerType playerType) {
         this.id = id;
@@ -18,6 +19,16 @@ public class Player {
         this.symbol = symbol;
         this.playerType = playerType;
         this.scanner = new Scanner(System.in);
+        this.cell = null;
+    }
+
+
+    public Cell getCell() {
+        return cell;
+    }
+
+    public void setCell(Cell cell) {
+        this.cell = cell;
     }
 
     public Symbol getSymbol() {
@@ -60,7 +71,26 @@ public class Player {
         this.scanner = scanner;
     }
 
-//    public Move makeMove(Board board) {
-//
-//    }
+    public Move makeMove(Board board) {
+        System.out.println("Please Type 'y' to Roll the Dice!!");
+        String userInput = scanner.nextLine();
+        int diceValue = 0;
+        if(userInput.equalsIgnoreCase("y")){
+            diceValue = rollTheDice();
+        }
+        System.out.println(String.format("%s's Rolled Dice Value is : %d",this.getName(),diceValue));
+
+        int[] rowColOfCell = board.findRowAndColGivenCellNumber(this.getCell().getCellNo()+diceValue);
+        int row = rowColOfCell[0];
+        int col = rowColOfCell[1];
+        System.out.println(row+" "+col+" "+diceValue+" "+this.getCell().getCellNo());
+        Move move = new Move(this,new Cell(row,col,board.getSizeOfBoard()));
+        return move;
+
+    }
+
+    public int rollTheDice(){
+        int randomNumber = (int) (Math.random() *6)+1;//(0 to 5)+1
+        return randomNumber;
+    }
 }
