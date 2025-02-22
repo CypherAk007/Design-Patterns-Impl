@@ -19,16 +19,21 @@ public class Game {
     private List<WinningStrategy> winningStrategies;
     private List<Obstacles> snakes;
     private List<Obstacles> ladders;
+    private int nextPlayerMoveIndex;
 
     public Game(int size, List<Player> players, List<WinningStrategy> winningStrategies, List<Obstacles> snakes, List<Obstacles> ladders) {
-        this.board = new Board(size,snakes,ladders);
+        this.board = new Board(size,snakes,ladders,players);
         this.players = players;
         this.moves = new ArrayList<>();
         this.gameState = GameState.IN_PROGRESS;
         this.winningStrategies = winningStrategies;
         this.snakes = snakes;
         this.ladders = ladders;
+        this.nextPlayerMoveIndex = 0;
+
     }
+
+
 
     public Board getBoard() {
         return board;
@@ -67,8 +72,12 @@ public class Game {
     }
 
     public void makeMove() {
+        Player currentPlayer = this.players.get(nextPlayerMoveIndex);
+        System.out.println(String.format("Its %s turn to play, Please Roll the Dice...",currentPlayer.getName()));
+//        Move move = currentPlayer.makeMove(board);
 
     }
+
 
     public void display() {
         board.display();

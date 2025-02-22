@@ -59,4 +59,8 @@ public class Player {
     public void setScanner(Scanner scanner) {
         this.scanner = scanner;
     }
+
+//    public Move makeMove(Board board) {
+//
+//    }
 }

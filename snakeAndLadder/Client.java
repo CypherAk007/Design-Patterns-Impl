@@ -22,12 +22,18 @@ public class Client {
 
         List<Player> players = List.of(
                 new Player(1L,"Ak",new Symbol('A'), PlayerType.HUMAN),
+//                new Player(1L,"Zk",new Symbol('Z'), PlayerType.HUMAN),
+//                new Player(1L,"Yk",new Symbol('Y'), PlayerType.HUMAN),
                 new Bot(2L,"GPT",new Symbol('X'), BotDifficultyLevel.EASY)
         );
 
         List<WinningStrategy> winningStrategies = List.of();
-        List<Obstacles> ladderLocations = List.of(new Obstacles(2,15),new Obstacles(6,13));
-        List<Obstacles> snakeLocations = List.of(new Obstacles(14,1),new Obstacles(5,2));
+        List<Obstacles> ladderLocations = List.of(new Obstacles(2,15),
+                new Obstacles(6,13)
+        );
+        List<Obstacles> snakeLocations = List.of(new Obstacles(14,1),
+                new Obstacles(5,2)
+        );
 
         Game game = gameController.startGame(sizeOfBoard,players,winningStrategies,ladderLocations,snakeLocations);
 

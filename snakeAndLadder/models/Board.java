@@ -2,21 +2,37 @@ package snakeAndLadder.models;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Set;
+import java.util.stream.Collectors;
 
 public class Board {
     private List<List<Cell>> board;
     private int sizeOfBoard;
     private List<Obstacles> snakes;
     private List<Obstacles> ladders;
+    private List<Player> players;
 
-    public Board(int size,List<Obstacles> snakes,List<Obstacles> ladders){
+    public Board(int size,List<Obstacles> snakes,List<Obstacles> ladders,List<Player> players){
         this.sizeOfBoard = size;
         this.board = initializeBoard(size);
         this.snakes = snakes;
         this.ladders = ladders;
+        this.players = players;
         updateWithSnakes(snakes);
         updateWithLadders(ladders);
+        initializePlayers(players);
+    }
 
+    private void initializePlayers(List<Player> players) {
+        int cellno = 1;//initially all players are at this pos
+        int[] rowColOfCell = findRowAndColGivenCellNumber(cellno);
+        int row = rowColOfCell[0];
+        int col = rowColOfCell[1];
+        Cell cell = board.get(row).get(col);
+        cell.setCellState(CellState.FILLED);
+        Set<Player> playerSet = players.stream()
+                        .collect(Collectors.toSet());
+        cell.setPlayers(playerSet);
     }
 
     private void updateWithSnakes(List<Obstacles> obstacles) {

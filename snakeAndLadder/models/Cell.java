@@ -1,9 +1,12 @@
 package snakeAndLadder.models;
 
+import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 public class Cell {
-    private List<Player> players;
+    private Set<Player> players;
     private int row;
     private int col;
     private int obstacleValue;
@@ -20,6 +23,7 @@ public class Cell {
         // if snake/ladder head exist here then default obstacleValue is updated
         this.obstacleValue = initializeValue(row,col,boardSize);
         this.cellState = CellState.EMPTY;
+        this.players = new HashSet<>();
     }
 
     private int initializeValue(int row, int col,int n) {
@@ -45,11 +49,11 @@ public class Cell {
     }
 
 
-    public List<Player> getPlayers() {
+    public Set<Player> getPlayers() {
         return players;
     }
 
-    public void setPlayers(List<Player> players) {
+    public void setPlayers(Set<Player> players) {
         this.players = players;
     }
 
