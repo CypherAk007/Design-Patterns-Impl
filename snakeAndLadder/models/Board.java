@@ -47,17 +47,20 @@ public class Board {
             Cell cell = board.get(row).get(col);
             cell.setCellState(CellState.SNAKE);
             cell.setObstacleValue(obstacle.getTail());
+//            System.out.println(cell);
         }
     }
 
     private void updateWithLadders(List<Obstacles> obstacles) {
         for(Obstacles obstacle:obstacles){
+//            System.out.println(obstacle);
             int[] rowColOfCell = findRowAndColGivenCellNumber(obstacle.getHead());
             int row = rowColOfCell[0];
             int col = rowColOfCell[1];
             Cell cell = board.get(row).get(col);
             cell.setCellState(CellState.LADDER);
             cell.setObstacleValue(obstacle.getTail());
+//            System.out.println(cell);
         }
     }
 

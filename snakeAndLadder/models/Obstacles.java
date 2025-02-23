@@ -23,5 +23,11 @@ public class Obstacles {
         this.tail = tail;
     }
 
-
+    @Override
+    public String toString() {
+        return "Obstacles{" +
+                "head=" + head +
+                ", tail=" + tail +
+                '}';
+    }
 }

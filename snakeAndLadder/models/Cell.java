@@ -103,6 +103,8 @@ public class Cell {
                 "row=" + row +
                 ", col=" + col +
                 ", obstacleValue=" + obstacleValue +
+                ", CellValue=" + cellNo +
+                ", CellState=" + cellState +
                 '}';
     }
 }

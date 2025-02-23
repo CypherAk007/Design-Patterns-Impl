@@ -83,7 +83,7 @@ public class Player {
         int[] rowColOfCell = board.findRowAndColGivenCellNumber(this.getCell().getCellNo()+diceValue);
         int row = rowColOfCell[0];
         int col = rowColOfCell[1];
-        System.out.println(row+" "+col+" "+diceValue+" "+this.getCell().getCellNo());
+//        System.out.println(row+" "+col+" "+diceValue+" "+this.getCell());
         Move move = new Move(this,new Cell(row,col,board.getSizeOfBoard()));
         return move;
 

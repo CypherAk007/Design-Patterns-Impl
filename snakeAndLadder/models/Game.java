@@ -30,7 +30,16 @@ public class Game {
         this.snakes = snakes;
         this.ladders = ladders;
         this.nextPlayerMoveIndex = 0;
-
+        System.out.println("███████╗███╗   ██╗ █████╗ ██╗  ██╗███████╗     █████╗ ███╗   ██╗██████╗     ██╗      █████╗ ██████╗ ██████╗ ███████╗██████╗ \n" +
+                "██╔════╝████╗  ██║██╔══██╗██║ ██╔╝██╔════╝    ██╔══██╗████╗  ██║██╔══██╗    ██║     ██╔══██╗██╔══██╗██╔══██╗██╔════╝██╔══██╗\n" +
+                "███████╗██╔██╗ ██║███████║█████╔╝ █████╗      ███████║██╔██╗ ██║██║  ██║    ██║     ███████║██║  ██║██║  ██║█████╗  ██████╔╝\n" +
+                "╚════██║██║╚██╗██║██╔══██║██╔═██╗ ██╔══╝      ██╔══██║██║╚██╗██║██║  ██║    ██║     ██╔══██║██║  ██║██║  ██║██╔══╝  ██╔══██╗\n" +
+                "███████║██║ ╚████║██║  ██║██║  ██╗███████╗    ██║  ██║██║ ╚████║██████╔╝    ███████╗██║  ██║██████╔╝██████╔╝███████╗██║  ██║\n" +
+                "╚══════╝╚═╝  ╚═══╝╚═╝  ╚═╝╚═╝  ╚═╝╚══════╝    ╚═╝  ╚═╝╚═╝  ╚═══╝╚═════╝     ╚══════╝╚═╝  ╚═╝╚═════╝ ╚═════╝ ╚══════╝╚═╝  ╚═╝\n" +
+                "                                                                                                                            ");
+        System.out.println("Welcome to the Game!! This is a multiplayer Game where we have an option to have a Bot also play the game");
+        System.out.println("The Board is zig-zag order Every player starts at bottem left and has to reach Top left. The First person to reach is the winner");
+        System.out.println("If any board location has a different number then it is either a Snake or a Ladder!!");
     }
 
 
@@ -80,6 +89,8 @@ public class Game {
         if(!isValidMove(currentPlayer,move)){
             System.out.println("Invalid Move!");
         }else{
+            checkForObstacle(move);
+//            System.out.println("Final Move: "+move.getCell());
             int currentBoardLocation = currentPlayer.getCell().getCellNo();
 //        change the new cell status if valid
             int row = move.getCell().getRow();
@@ -98,23 +109,36 @@ public class Game {
             if(currentPlayerCell.getPlayers().size()==0){
                 currentPlayerCell.setCellState(CellState.EMPTY);
             }
-
 //        change the cell of player
             currentPlayer.setCell(cellToChange);
-
-
 //        check winner - No Draw as of now.// there is always a winner
             if(checkWinner(board,finalMove)){
                 gameState = GameState.WIN;
                 winner = currentPlayer;
             }
-
-
         }
 //        update nextPlayerIndx
             //        update the next player //
             nextPlayerMoveIndex = (nextPlayerMoveIndex + 1)%players.size();
 
+    }
+
+    private void checkForObstacle(Move move) {
+        int row = move.getCell().getRow();
+        int col = move.getCell().getCol();
+        Cell curCell = board.getBoard().get(row).get(col);
+        if(curCell.getObstacleValue()!=curCell.getCellNo()){
+            Player curPlayer = move.getPlayer();
+            if(curCell.getCellState()==CellState.LADDER){
+                System.out.println(String.format("Bonus Player %s has Arrived at Ladder!!",curPlayer.getName()));
+            }else if(curCell.getCellState()==CellState.SNAKE) {
+                System.out.println(String.format("Oh No!! Player %s has Arrived at Snake!!", curPlayer.getName()));
+            }
+            int[] newRowCol = board.findRowAndColGivenCellNumber(curCell.getObstacleValue());
+            int newRow = newRowCol[0];
+            int newCol = newRowCol[1];
+            move.setCell(new Cell(newRow,newCol, board.getSizeOfBoard()));
+        }
     }
 
     private boolean checkWinner(Board board,Move finalMove){
