@@ -1,5 +1,6 @@
-package parkinglot.models;
+package parkinglot_redo.models;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class ParkingSpot extends BaseModel {

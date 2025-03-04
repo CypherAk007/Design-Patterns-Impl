@@ -38,8 +38,17 @@ public class TicketController {
 //        gateRepository.save(defaultGate);
         defaultGate  = ticketService.generateDefaultGate(defaultGate);
         System.out.println(defaultGate);
+        ParkingFloor parkingFloor = new ParkingFloor();
+        parkingFloor.setParkingSpots(List.of(new ParkingSpot(new ArrayList<>(List.of(VehicleType.TWO_WHEELER)),ParkingSpotStatus.EMPTY,parkingFloor,1),
+                new ParkingSpot(new ArrayList<>(List.of(VehicleType.TWO_WHEELER)),ParkingSpotStatus.EMPTY,parkingFloor,2),
+                new ParkingSpot(new ArrayList<>(List.of(VehicleType.TWO_WHEELER)),ParkingSpotStatus.EMPTY,parkingFloor,3),
+                new ParkingSpot(new ArrayList<>(List.of(VehicleType.TWO_WHEELER)),ParkingSpotStatus.EMPTY,parkingFloor,4))
+        );
+        parkingFloor.setStatus(ParkingFloorStatus.EMPTY);
+        parkingFloor.setNumber(1);
 
-        ParkingLot defaultPl = new ParkingLot(new ArrayList<>(),
+
+        ParkingLot defaultPl = new ParkingLot(new ArrayList<>(List.of(parkingFloor)),
                 new ArrayList<>(List.of(defaultGate)),
                 new ArrayList<>(List.of(VehicleType.TWO_WHEELER,VehicleType.THREE_WHEELER,VehicleType.FOUR_WHEELER)),
                 ParkingLotStatus.OPERATIONAL,
