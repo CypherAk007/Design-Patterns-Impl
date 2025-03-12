@@ -14,6 +14,10 @@ public class King extends ChessPiece{
 
     @Override
     public boolean validateMove(Move move,Board board) {
+//        TBI: Castling
+        if(Math.abs(move.getFromCell().getRow()-move.getToCell().getRow())>1 || Math.abs(move.getFromCell().getCol()-move.getToCell().getCol())>1){
+            return false;
+        }
         return true;
     }
 
