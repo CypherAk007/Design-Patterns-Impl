@@ -134,7 +134,7 @@ public class Game {
         }
 
         if(move.getToCell().getCellStatus().equals(CellStatus.FILLED) && move.getFromCell().getChessPiece().getChessPieceColor().equals(move.getToCell().getChessPiece().getChessPieceColor())){
-            System.out.println(String.format("Player: %s .Do not move Opponents Chess Pieces !! ",move.getPlayer().getName()));
+            System.out.println(String.format("Player: %s .You Can't Go on your own Chess Pieces !! ",move.getPlayer().getName()));
             return false;
         }
 
@@ -143,6 +143,7 @@ public class Game {
             System.out.println(String.format("Player: %s .You are trying to make Illegal Move!! ",move.getPlayer().getName()));
             return false;
         }
+
 
 
         return true;
