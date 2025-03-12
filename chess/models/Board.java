@@ -17,6 +17,10 @@ public class Board {
         initializePlayers(players);
     }
 
+    public List<List<Cell>> getBoard() {
+        return board;
+    }
+
     private void initializePlayers(List<Player> players) {
 ////        For testing
 //        placePieces(ChessPieceColor.WHITE,null);

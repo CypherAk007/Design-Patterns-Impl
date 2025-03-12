@@ -1,9 +1,6 @@
 package chess.controllers;
 
-import chess.exceptions.DuplicateChessColorPieceException;
-import chess.exceptions.DuplicateSymbolException;
-import chess.exceptions.MoreThanOneBotException;
-import chess.exceptions.PlayersMismatchException;
+import chess.exceptions.*;
 import chess.models.Game;
 import chess.models.GameState;
 import chess.models.Player;
@@ -25,8 +22,8 @@ public class GameController {
         return game.getGameState();
     }
 
-    public void makeMove(Game game){
-//        game.makeMove();
+    public void makeMove(Game game) throws OutOfBoundsException {
+        game.makeMove();
     }
 
     public void displayBoard(Game game){

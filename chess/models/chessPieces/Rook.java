@@ -13,7 +13,7 @@ public class Rook extends ChessPiece {
     }
 
     @Override
-    public boolean validateMove(Board board) {
+    public boolean validateMove(Move move,Board board) {
         return true;
     }
 

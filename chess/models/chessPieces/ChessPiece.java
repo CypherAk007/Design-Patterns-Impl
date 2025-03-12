@@ -39,7 +39,16 @@ public abstract class ChessPiece {
     }
 
 
-    public abstract boolean validateMove(Board board);
+    public abstract boolean validateMove(Move move,Board board);
 
     public abstract Symbol getSymbol();
+
+    @Override
+    public String toString() {
+        return "ChessPiece{" +
+                "chessPieceType=" + chessPieceType +
+                ", chessPieceColor=" + chessPieceColor +
+                ", player=" + player +
+                '}';
+    }
 }

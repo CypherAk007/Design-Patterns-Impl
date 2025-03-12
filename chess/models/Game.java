@@ -1,9 +1,8 @@
 package chess.models;
 
-import chess.exceptions.DuplicateChessColorPieceException;
-import chess.exceptions.DuplicateSymbolException;
-import chess.exceptions.MoreThanOneBotException;
-import chess.exceptions.PlayersMismatchException;
+import chess.exceptions.*;
+import chess.factories.ChessPieceSelectionFactory;
+import chess.models.chessPieces.ChessPiece;
 import chess.strategies.botPlayingStrategy.BotPlayingStrategy;
 import chess.strategies.specialCases.SpecialCaseStrategy;
 import chess.strategies.winningStrategy.WinningStrategy;
@@ -14,7 +13,7 @@ import java.util.List;
 public class Game {
     private Board board;
     private List<Player> players;
-    private List<Board> moves;
+    private List<Move> moves;
     private Player winner;
     private GameState gameState;
     private int nextPlayerMoveIndex;
@@ -43,7 +42,7 @@ public class Game {
         return players;
     }
 
-    public List<Board> getMoves() {
+    public List<Move> getMoves() {
         return moves;
     }
 
@@ -66,6 +65,89 @@ public class Game {
     public void display(){
         board.display();
     }
+
+    public void makeMove() throws OutOfBoundsException {
+        //get player
+        Player currentPlayer = this.players.get(nextPlayerMoveIndex);
+        System.out.println(String.format("Its %s turn to play, Please Make your Move!!",currentPlayer.getName()));
+
+        //        get input from respective player
+        Move currentMove = currentPlayer.makeMove(board);
+        System.out.println(String.format(" %s wants to move %s of %s to %s...",currentPlayer.getName(),
+                currentMove.getFromCell().getChessPiece().getSymbol().getCharacter(),
+                currentMove.getFromCell().getLocation(),
+                currentMove.getToCell().getLocation()));
+
+        //        validity: check the inputs from and to
+        if(!isValidMove(currentMove)){
+            System.out.println("Invalid Move! Please Try Again...");
+            return;
+        }
+
+//        get row col -> cell and make move and  erase old cell
+        Cell curCell = currentMove.getFromCell();
+        Cell destCell = currentMove.getToCell();
+        System.out.println("Cell Cur To Details: ");
+        System.out.println(curCell+" "+destCell);
+//        if destCell contains opponent chess piece remove it
+        ChessPiece newChessPiece = ChessPieceSelectionFactory.getChessPieceBasedOnInput(curCell.getChessPiece().getChessPieceType(), curCell.getChessPiece().getPlayer().getPlayerChessPieceColor(),currentMove.getPlayer());
+        System.out.println(newChessPiece);
+        destCell.setChessPiece(newChessPiece);
+        destCell.setCellStatus(CellStatus.FILLED);
+
+        curCell.setChessPiece(null);
+        curCell.setCellStatus(CellStatus.EMPTY);
+        System.out.println("Cell Cur To Details Future: ");
+        System.out.println(curCell+" "+destCell);
+//        add to moves list
+        Move finalMove = new Move(currentMove.getPlayer(),curCell,destCell);
+        moves.add(finalMove);
+
+//        check winner
+        if(checkWinner(board,finalMove)){
+            this.gameState = GameState.WIN;
+            this.winner = currentPlayer;
+        }
+
+//        update the next move index
+        this.nextPlayerMoveIndex = (this.nextPlayerMoveIndex+1)%players.size();
+
+    }
+
+    private boolean checkWinner(Board board, Move finalMove) {
+//        TBI
+        return false;
+    }
+
+    public boolean isValidMove(Move move) {
+//        out of bounds exception
+
+//        correct player -> correct from location chess piece
+        if(move.getFromCell().getCellStatus().equals(CellStatus.EMPTY)){
+            System.out.println(String.format("%s has Selected an Empty Cell!!",move.getPlayer().getName()));
+            return false;
+        }
+
+        if(move.getFromCell().getCellStatus().equals(CellStatus.FILLED) && !move.getFromCell().getChessPiece().getChessPieceColor().equals(move.getPlayer().getPlayerChessPieceColor())){
+            System.out.println(String.format("Player: %s .Do not move Opponents Chess Pieces !! ",move.getPlayer().getName()));
+            return false;
+        }
+
+        if(move.getToCell().getCellStatus().equals(CellStatus.FILLED) && move.getFromCell().getChessPiece().getChessPieceColor().equals(move.getToCell().getChessPiece().getChessPieceColor())){
+            System.out.println(String.format("Player: %s .Do not move Opponents Chess Pieces !! ",move.getPlayer().getName()));
+            return false;
+        }
+
+//  //        TBI :respective chess piece validation -> trajectory, path and destination
+        if(!move.getFromCell().getChessPiece().validateMove(move,board)){
+            System.out.println(String.format("Player: %s .You are trying to make Illegal Move!! ",move.getPlayer().getName()));
+            return false;
+        }
+
+
+        return true;
+    }
+
 
 
     public static GameBuilder builder(){
@@ -100,17 +182,6 @@ public class Game {
         }
 
         private void validatePlayers() throws DuplicateSymbolException, DuplicateChessColorPieceException, PlayersMismatchException {
-//            traditional way
-//            if(players.size()!=2){
-//                throw new PlayersMismatchException(" Invalid Number of Players Entered!!");
-//            }
-//            if(players.get(0).getPlayerChessPieceColor().equals(players.get(1).getPlayerChessPieceColor())){
-//                throw new DuplicateChessColorPieceException("Both Players Cant have same chess Piece color!!");
-//            }
-//            if(players.get(0).getSymbol().getCharacter()==players.get(1).getSymbol().getCharacter()){
-//                throw new DuplicateSymbolException("Both Players Cant have same Symbol!!");
-//            }
-
 //            using streams
             long playersCount = players.stream().count();
             if(playersCount!=2){

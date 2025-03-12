@@ -61,6 +61,9 @@ public class Cell {
         return "Cell{" +
                 "row=" + row +
                 ", col=" + col +
-                ", location="+location;
+                ", location='" + location + '\'' +
+                ", cellStatus=" + cellStatus +
+                ", chessPiece=" + chessPiece +
+                '}';
     }
 }
