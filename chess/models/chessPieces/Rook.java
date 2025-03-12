@@ -20,9 +20,10 @@ public class Rook extends ChessPiece {
         int toCol = move.getToCell().getCol();
         int curRow = move.getFromCell().getRow();
         int curCol = move.getFromCell().getCol();
+//        System.out.println(toRow+" "+toCol+" "+curRow+" "+curCol);
 
 //        move in row/col only no diagonal / random loc
-        if(toRow!=curRow || toCol!=curCol){
+        if(!(toRow==curRow || toCol==curCol)){
             return false;
         }
         //cannot cross over any one
@@ -34,8 +35,8 @@ public class Rook extends ChessPiece {
                 start = toCol;
                 end = curCol;
             }
-            for(int j = start;j<end;j++){
-                if(isValid(toRow,j)) {
+            for(int j = start+1;j<end;j++){
+                if(isValid(toRow,j) ) {
                     if (board.getBoard().get(toRow).get(j).getCellStatus().equals(CellStatus.FILLED)) {
                         return false;
                     }
@@ -49,7 +50,7 @@ public class Rook extends ChessPiece {
                 start = toRow;
                 end = curRow;
             }
-            for(int i = start;i<end;i++){
+            for(int i = start+1;i<end;i++){
                 if(isValid(i,toCol)) {
                     if (board.getBoard().get(i).get(toCol).getCellStatus().equals(CellStatus.FILLED)) {
                         return false;

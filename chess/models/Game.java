@@ -20,6 +20,7 @@ public class Game {
     private List<WinningStrategy> winningStrategies;
     private List<SpecialCaseStrategy> specialCaseStrategies;
 
+
     public Game(List<Player> players, List<WinningStrategy> winningStrategies, List<SpecialCaseStrategy> specialCaseStrategies) {
         this.board = new Board(players);
         this.players = players;
@@ -28,6 +29,13 @@ public class Game {
         this.nextPlayerMoveIndex = 0;
         this.winningStrategies = winningStrategies;
         this.specialCaseStrategies = specialCaseStrategies;
+        System.out.println("██████╗ ███████╗ █████╗ ██╗         ████████╗██╗███╗   ███╗███████╗     ██████╗██╗  ██╗███████╗███████╗███████╗    ███████╗███╗   ██╗ ██████╗ ██╗███╗   ██╗███████╗\n" +
+                "██╔══██╗██╔════╝██╔══██╗██║         ╚══██╔══╝██║████╗ ████║██╔════╝    ██╔════╝██║  ██║██╔════╝██╔════╝██╔════╝    ██╔════╝████╗  ██║██╔════╝ ██║████╗  ██║██╔════╝\n" +
+                "██████╔╝█████╗  ███████║██║            ██║   ██║██╔████╔██║█████╗      ██║     ███████║█████╗  ███████╗███████╗    █████╗  ██╔██╗ ██║██║  ███╗██║██╔██╗ ██║█████╗  \n" +
+                "██╔══██╗██╔══╝  ██╔══██║██║            ██║   ██║██║╚██╔╝██║██╔══╝      ██║     ██╔══██║██╔══╝  ╚════██║╚════██║    ██╔══╝  ██║╚██╗██║██║   ██║██║██║╚██╗██║██╔══╝  \n" +
+                "██║  ██║███████╗██║  ██║███████╗       ██║   ██║██║ ╚═╝ ██║███████╗    ╚██████╗██║  ██║███████╗███████║███████║    ███████╗██║ ╚████║╚██████╔╝██║██║ ╚████║███████╗\n" +
+                "╚═╝  ╚═╝╚══════╝╚═╝  ╚═╝╚══════╝       ╚═╝   ╚═╝╚═╝     ╚═╝╚══════╝     ╚═════╝╚═╝  ╚═╝╚══════╝╚══════╝╚══════╝    ╚══════╝╚═╝  ╚═══╝ ╚═════╝ ╚═╝╚═╝  ╚═══╝╚══════╝\n" +
+                "                                                                                                                                                                   ");
     }
 
     public GameState getGameState(){
@@ -87,18 +95,22 @@ public class Game {
 //        get row col -> cell and make move and  erase old cell
         Cell curCell = currentMove.getFromCell();
         Cell destCell = currentMove.getToCell();
-        System.out.println("Cell Cur To Details: ");
-        System.out.println(curCell+" "+destCell);
+//        System.out.println("Cell Cur To Details: ");
+//        System.out.println(curCell+" "+destCell);
 //        if destCell contains opponent chess piece remove it
         ChessPiece newChessPiece = ChessPieceSelectionFactory.getChessPieceBasedOnInput(curCell.getChessPiece().getChessPieceType(), curCell.getChessPiece().getPlayer().getPlayerChessPieceColor(),currentMove.getPlayer());
-        System.out.println(newChessPiece);
+//        System.out.println(newChessPiece);
         destCell.setChessPiece(newChessPiece);
         destCell.setCellStatus(CellStatus.FILLED);
 
+        if(checkForCheckMate(currentMove)){
+            currentMove.getPlayer().increaseCheckMateCounter();
+        }
+
         curCell.setChessPiece(null);
         curCell.setCellStatus(CellStatus.EMPTY);
-        System.out.println("Cell Cur To Details Future: ");
-        System.out.println(curCell+" "+destCell);
+//        System.out.println("Cell Cur To Details Future: ");
+//        System.out.println(curCell+" "+destCell);
 //        add to moves list
         Move finalMove = new Move(currentMove.getPlayer(),curCell,destCell);
         moves.add(finalMove);
@@ -114,8 +126,20 @@ public class Game {
 
     }
 
+    private boolean checkForCheckMate(Move currentMove) {
+//        TBI: implement logic for this checkmate
+//        put stratgey for all pices on current piece and check if
+//        future move can check mate king ?
+        return false;
+    }
+
     private boolean checkWinner(Board board, Move finalMove) {
 //        TBI
+        for(WinningStrategy winningStrategy:winningStrategies){
+            if(winningStrategy.checkWinner(board,finalMove)){
+                return true;
+            }
+        }
         return false;
     }
 

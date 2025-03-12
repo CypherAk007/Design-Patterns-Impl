@@ -14,6 +14,7 @@ public class Queen extends ChessPiece{
 
     @Override
     public boolean validateMove(Move move,Board board) {
+//        TBI: Rook+Bishop
         return true;
     }
 

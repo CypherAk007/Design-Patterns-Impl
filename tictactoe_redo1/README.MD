@@ -1,6 +1,40 @@
 ## Class Diagram - Tic Tac Toe
 
 ```
+
+## DRY RUN
+
+It's Ak's turn, Please Make a Move.
+Please tell the row index where you want to make a move:(Starting from 0)
+1
+Please tell the col index where you want to make a move:(Starting from 0)
+1
+Ak has made a move at row: 1 and column: 1
+
+
+   |   |   
+------------
+   | x |   
+------------
+   |   |   
+
+Do you want to Undo? (y/n)
+n
+It's GPT's turn, Please Make a Move.
+GPT has made a move at row: 0 and column: 0
+
+
+ O |   |   
+------------
+   | x |   
+------------
+   |   |   
+
+Do you want to Undo? (y/n)
+0
+It's Ak's turn, Please Make a Move.
+
+
 class Game {
 
   attributes:

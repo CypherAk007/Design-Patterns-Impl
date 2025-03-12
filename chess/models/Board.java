@@ -113,7 +113,7 @@ public class Board {
             }
         }
         printBottomBoundary();
-        System.out.println(board + " " + board.size());
+//        System.out.println(board + " " + board.size());
 
     }
 

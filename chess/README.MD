@@ -1,4 +1,84 @@
 ```
+##WORKING DEMO
+██████╗ ███████╗ █████╗ ██╗         ████████╗██╗███╗   ███╗███████╗     ██████╗██╗  ██╗███████╗███████╗███████╗    ███████╗███╗   ██╗ ██████╗ ██╗███╗   ██╗███████╗
+██╔══██╗██╔════╝██╔══██╗██║         ╚══██╔══╝██║████╗ ████║██╔════╝    ██╔════╝██║  ██║██╔════╝██╔════╝██╔════╝    ██╔════╝████╗  ██║██╔════╝ ██║████╗  ██║██╔════╝
+██████╔╝█████╗  ███████║██║            ██║   ██║██╔████╔██║█████╗      ██║     ███████║█████╗  ███████╗███████╗    █████╗  ██╔██╗ ██║██║  ███╗██║██╔██╗ ██║█████╗  
+██╔══██╗██╔══╝  ██╔══██║██║            ██║   ██║██║╚██╔╝██║██╔══╝      ██║     ██╔══██║██╔══╝  ╚════██║╚════██║    ██╔══╝  ██║╚██╗██║██║   ██║██║██║╚██╗██║██╔══╝  
+██║  ██║███████╗██║  ██║███████╗       ██║   ██║██║ ╚═╝ ██║███████╗    ╚██████╗██║  ██║███████╗███████║███████║    ███████╗██║ ╚████║╚██████╔╝██║██║ ╚████║███████╗
+╚═╝  ╚═╝╚══════╝╚═╝  ╚═╝╚══════╝       ╚═╝   ╚═╝╚═╝     ╚═╝╚══════╝     ╚═════╝╚═╝  ╚═╝╚══════╝╚══════╝╚══════╝    ╚══════╝╚═╝  ╚═══╝ ╚═════╝ ╚═╝╚═╝  ╚═══╝╚══════╝
+                                                                                                                                                                   
+┌────┬────┬────┬────┬────┬────┬────┬────┐
+│ ♜  │ ♞  │ ♝  │ ♛  │ ♚  │ ♝  │ ♞  │ ♜  │
+├────┼────┼────┼────┼────┼────┼────┼────┤
+│ ♟  │ ♟  │ ♟  │ ♟  │ ♟  │ ♟  │ ♟  │ ♟  │
+├────┼────┼────┼────┼────┼────┼────┼────┤
+│    │░░░░│    │░░░░│    │░░░░│    │░░░░│
+├────┼────┼────┼────┼────┼────┼────┼────┤
+│░░░░│    │░░░░│    │░░░░│    │░░░░│    │
+├────┼────┼────┼────┼────┼────┼────┼────┤
+│    │░░░░│    │░░░░│    │░░░░│    │░░░░│
+├────┼────┼────┼────┼────┼────┼────┼────┤
+│░░░░│    │░░░░│    │░░░░│    │░░░░│    │
+├────┼────┼────┼────┼────┼────┼────┼────┤
+│ ♙  │ ♙  │ ♙  │ ♙  │ ♙  │ ♙  │ ♙  │ ♙  │
+├────┼────┼────┼────┼────┼────┼────┼────┤
+│ ♖  │ ♘  │ ♗  │ ♕  │ ♔  │ ♗  │ ♘  │ ♖  │
+└────┴────┴────┴────┴────┴────┴────┴────┘
+Its AK turn to play, Please Make your Move!!
+Enter the row no. of chess piece you want to move : 
+6
+Enter the col no. of chess piece you want to move : 
+4
+Enter the row no. of Board you want to Go To : 
+5
+Enter the col no. of Board you want to Go To : 
+4
+ AK wants to move ♙ of E2 to E3...
+┌────┬────┬────┬────┬────┬────┬────┬────┐
+│ ♜  │ ♞  │ ♝  │ ♛  │ ♚  │ ♝  │ ♞  │ ♜  │
+├────┼────┼────┼────┼────┼────┼────┼────┤
+│ ♟  │ ♟  │ ♟  │ ♟  │ ♟  │ ♟  │ ♟  │ ♟  │
+├────┼────┼────┼────┼────┼────┼────┼────┤
+│    │░░░░│    │░░░░│    │░░░░│    │░░░░│
+├────┼────┼────┼────┼────┼────┼────┼────┤
+│░░░░│    │░░░░│    │░░░░│    │░░░░│    │
+├────┼────┼────┼────┼────┼────┼────┼────┤
+│    │░░░░│    │░░░░│    │░░░░│    │░░░░│
+├────┼────┼────┼────┼────┼────┼────┼────┤
+│░░░░│    │░░░░│    │ ♙  │    │░░░░│    │
+├────┼────┼────┼────┼────┼────┼────┼────┤
+│ ♙  │ ♙  │ ♙  │ ♙  │    │ ♙  │ ♙  │ ♙  │
+├────┼────┼────┼────┼────┼────┼────┼────┤
+│ ♖  │ ♘  │ ♗  │ ♕  │ ♔  │ ♗  │ ♘  │ ♖  │
+└────┴────┴────┴────┴────┴────┴────┴────┘
+Its BK turn to play, Please Make your Move!!
+Enter the row no. of chess piece you want to move : 
+1
+Enter the col no. of chess piece you want to move : 
+3
+Enter the row no. of Board you want to Go To : 
+2
+Enter the col no. of Board you want to Go To : 
+3
+ BK wants to move ♟ of D7 to D6...
+┌────┬────┬────┬────┬────┬────┬────┬────┐
+│ ♜  │ ♞  │ ♝  │ ♛  │ ♚  │ ♝  │ ♞  │ ♜  │
+├────┼────┼────┼────┼────┼────┼────┼────┤
+│ ♟  │ ♟  │ ♟  │    │ ♟  │ ♟  │ ♟  │ ♟  │
+├────┼────┼────┼────┼────┼────┼────┼────┤
+│    │░░░░│    │ ♟  │    │░░░░│    │░░░░│
+├────┼────┼────┼────┼────┼────┼────┼────┤
+│░░░░│    │░░░░│    │░░░░│    │░░░░│    │
+├────┼────┼────┼────┼────┼────┼────┼────┤
+│    │░░░░│    │░░░░│    │░░░░│    │░░░░│
+├────┼────┼────┼────┼────┼────┼────┼────┤
+│░░░░│    │░░░░│    │ ♙  │    │░░░░│    │
+├────┼────┼────┼────┼────┼────┼────┼────┤
+│ ♙  │ ♙  │ ♙  │ ♙  │    │ ♙  │ ♙  │ ♙  │
+├────┼────┼────┼────┼────┼────┼────┼────┤
+│ ♖  │ ♘  │ ♗  │ ♕  │ ♔  │ ♗  │ ♘  │ ♖  │
+└────┴────┴────┴────┴────┴────┴────┴────┘
+
 ##Class Diagram
 class Game {
 
@@ -7,19 +87,21 @@ class Game {
     players: List<Player>
     moves: List<Move>
     winner: Player
-    gameState: GameState
-    winningStrategies: List<WinningStrategy>
-    snakes: List<Obstacles>
-    ladders: List<Obstacles>
+    status: GameStatus
     nextPlayerMoveIndex: int 
+    winningStrategies: List<WinningStrategy>
 
   methods:
-    // @Getters and @Setters for above Attributes 
+    getBoard() : Board
+    getPlayers() : List<Player>
+    getMoves() : List<Move>
+    getWinner() : Player 
+    getState() : GameState
     display() : void 
     makeMove() : void 
-    checkWinner(board: Board,finalMove: Move): boolean
-    isValidMove(currentPlayer:Player,move: Move): boolean
-    checkForObstacle(move:Move)
+    checkWinner(board: Board,lastMove: Move): boolean
+    isValidMove(move: Move): boolean
+    checkForCheckMate(currentMove: Move)
 
 }
 
@@ -30,12 +112,12 @@ class Player {
     name: String
     id: long
     playerType: PlayerType 
-    cell:Cell
+    playerChessPieceColor: ChessPieceColor
+    checkMateCounter: int
 
   methods:
     // @Getters and @Setters for above Attributes 
     makeMove(board: Board) : Move
-    rollTheDice():int
 }
 
 class Board {
@@ -43,18 +125,14 @@ class Board {
   attributes:
     size: int 
     board: List<List<Cell>>
-    snakes:List<Obstacles>
-    ladders:List<Obstacles>
-    players:List<Player>
+    players: List<Player>
 
   methods:
   // @Getters and @Setters for above Attributes 
     display() : void 
-    initializeBoard(size:int) : List<List<Cell>>
-    initializePlayers(players:List<Player>):void
-    updateWithSnakes(obstacles:List<Obstacles>):void
-    updateWithLadders(obstacles:List<Obstacles>):void
-    findRowAndColGivenCellNumber(boardNo:int):int[]
+    getCellContent(cell:Cell):void
+    initializing(size:int) : List<List<Cell>>
+    placePieces(chessPieceColr:ChessPieceColor , player:Player) : void
 }
 
 class Cell {
@@ -62,26 +140,22 @@ class Cell {
   attributes:
     row : int 
     col : int 
-    obstacleValue : int 
-    cellNo : int 
-    cellState: CellState 
-    player : Set<Player>
+    cellStatus: CellStatus 
+    chessPiece : ChessPiece 
 
   methods:
     // @Getters and @Setters for above Attributes 
-    initializeValue(row:int,col:int):initializeBoard
 }
 
 class Move {
 
   attributes:
     player: Player
-    cell: Cell
+    fromCell: Cell
+    toCell: Cell
 
   methods:
-    getCell() : cell 
-    getPlayer(): Player
-    setPlayer(player:Player): void
+    // @Getters and @Setters for above Attributes
 }
 
 class BOT extends Player{
@@ -102,13 +176,27 @@ class Symbol{
     // @Getters and @Setters for above Attributes 
 }
 
-class Obstacles{
-    attributes:
-        head:int 
-        tail:int
-    methods: 
+abstract class ChessPiece{
+  attributes:
+    chessPieceType: ChessPieceType
+    chessPieceColor : ChessPieceColor
+    player: Player
+
+  methods:
     // @Getters and @Setters for above Attributes 
+  
+  abstract methods:
+    validateMove(move:Move,board:Board):boolean
 }
+
+Class Bishop extends ChessPiece{
+  attributes:
+    whiteSymbol:Symbol
+    blackSymbol: Symbol
+  Methods:
+    validateMove(move:Move,board:Board):boolean
+}
+Above Similar IMPL for ROOK,QUEEN,KING,PAWN,KNIGHT
 
 enum PlayerType {
     HUMAN,
@@ -116,19 +204,29 @@ enum PlayerType {
 }
 
 
-enum CellState {
-    SNAKE,
-    LADDER,
-    EMPTY,
-    FILLED
+enum cellStatus {
+    FILLED,
+    EMPTY
 }
 
 enum gameStatus {
     IN-PROGRESS,
     DRAW,
     WIN,
-    PAUSE
+    CHECK,
+    CHECKMATE,
+    STALEMATE
 }
+
+enum ChessPieceType {
+    KING,
+    QUEEN,
+    KNIGHT,
+    ROOK,
+    BISHOP,
+    PAWN
+}
+
 
 enum BotDifficultyLevel {
     EASY,
@@ -136,13 +234,29 @@ enum BotDifficultyLevel {
     HARD
 }
 
+ enum ChessPieceColor {
+    BLACK,
+    WHITE
+}
+
 
 Design patterns
 
 1. Builder Pattern Game object creation and all the validations will be added before
 building game object
-2. Strategy Pattern for winning strategy(LastBoxWinningStrategy) based on user input and Implemented using Interfaces
-3. Strategy Pattern for BotPlayingStrategy (Easy, Medium, Hard) based on user input and Implemented using Interfaces
-4. The whole game is built on MVC Architecture. And Client Contract is GameController.
- 
+2. Strategy Pattern for winning strategy(Row, Column, Diagonal) based on user input
+3. Strategy Pattern for BotPlayingStrategy (Easy, Medium, Hard) based on user input
+## PENDING Implementations
+
+-> Should not check to own king
+-> Get All Possible Moves()
+-> Casteling | EnPassant | Promotion
+-> Pawn -> reverse calc Double Moves
+-> Queen validation Logic
+-> Bishop -> crossing over other pieces Possible. Which is not correct.
+-> Checkmate logic
+-> Checklogic 
+-> Current King in check ? impl to check this
+-> if king is in check you cant make move only capture or move king
+
 ```

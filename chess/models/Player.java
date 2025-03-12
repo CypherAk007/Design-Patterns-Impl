@@ -11,6 +11,7 @@ public class Player {
     private PlayerType playerType;
     private ChessPieceColor playerChessPieceColor;//if white -> move only white pieces
     private Scanner scanner;
+    private int checkMateCounter;
 
     public Player(long id, Symbol symbol, String name, PlayerType playerType, ChessPieceColor playerChessPieceColor) {
         this.id = id;
@@ -19,6 +20,15 @@ public class Player {
         this.playerType = playerType;
         this.playerChessPieceColor = playerChessPieceColor;
         this.scanner = new Scanner(System.in);
+        this.checkMateCounter = 0;
+    }
+
+    public void increaseCheckMateCounter(){
+        this.checkMateCounter+=1;
+    }
+
+    public int getCheckMateCounter(){
+        return this.checkMateCounter;
     }
 
     public long getId() {
