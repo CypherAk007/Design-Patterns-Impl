@@ -6,6 +6,7 @@ import java.util.ArrayList;
 
 public class ChessApplication {
     public static void main(String[] args) {
+//        Play
         Board board = new Board(new ArrayList<>());
         board.display();
 
