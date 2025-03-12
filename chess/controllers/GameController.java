@@ -1,5 +1,9 @@
 package chess.controllers;
 
+import chess.exceptions.DuplicateChessColorPieceException;
+import chess.exceptions.DuplicateSymbolException;
+import chess.exceptions.MoreThanOneBotException;
+import chess.exceptions.PlayersMismatchException;
 import chess.models.Game;
 import chess.models.GameState;
 import chess.models.Player;
@@ -9,23 +13,27 @@ import chess.strategies.winningStrategy.WinningStrategy;
 import java.util.List;
 
 public class GameController {
-    public Game startGame(List<Player> players, List<WinningStrategy> winningStrategies, List<SpecialCaseStrategy> specialCaseStrategies){
-
+    public Game startGame(List<Player> players, List<WinningStrategy> winningStrategies, List<SpecialCaseStrategy> specialCaseStrategies) throws DuplicateSymbolException, PlayersMismatchException, DuplicateChessColorPieceException, MoreThanOneBotException {
+        return Game.builder()
+                .setPlayers(players)
+                .setWinningStrategies(winningStrategies)
+                .setSpecialCaseStrategies(specialCaseStrategies)
+                .build();
     }
 
     public GameState getGameState(Game game){
-
+        return game.getGameState();
     }
 
     public void makeMove(Game game){
-
+//        game.makeMove();
     }
 
     public void displayBoard(Game game){
-
+        game.display();
     }
 
     public Player getWinner(Game game){
-
+        return game.getWinner();
     }
 }

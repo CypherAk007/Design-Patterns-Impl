@@ -3,8 +3,8 @@ package chess.models.chessPieces;
 import chess.models.*;
 
 public class Pawn extends ChessPiece{
-    public Pawn(ChessPieceType chessPieceType, ChessPieceColor chessPieceColor, Player player, Symbol symbol) {
-        super(chessPieceType, chessPieceColor, player, symbol);
+    public Pawn(ChessPieceColor chessPieceColor, Player player, Symbol symbol) {
+        super(ChessPieceType.PAWN, chessPieceColor, player, symbol);
     }
 
     @Override
